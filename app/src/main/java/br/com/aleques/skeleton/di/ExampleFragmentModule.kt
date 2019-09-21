@@ -4,7 +4,7 @@ import dagger.Module
 import dagger.Provides
 
 @Module
-class FragmentModule {
+class ExampleFragmentModule {
 //    @FragmentScope
 //    @Provides
 //    fun provideSomething() : Something

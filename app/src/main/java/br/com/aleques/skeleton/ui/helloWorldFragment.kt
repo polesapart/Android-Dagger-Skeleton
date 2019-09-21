@@ -11,7 +11,9 @@ import br.com.aleques.skeleton.R
 import br.com.aleques.skeleton.databinding.FragmentHelloWorldBinding
 import br.com.aleques.skeleton.util.autoCleared
 import br.com.aleques.skeleton.vo.ExampleData
+import com.google.firebase.analytics.FirebaseAnalytics
 import dagger.android.support.DaggerFragment
+import javax.inject.Inject
 
 
 /**
@@ -31,6 +33,8 @@ class helloWorldFragment : DaggerFragment() {
 //
 //    }
 
+    @Inject lateinit var mFirebaseAnalytics: FirebaseAnalytics
+
     private var binding by autoCleared<FragmentHelloWorldBinding>()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -45,6 +49,7 @@ class helloWorldFragment : DaggerFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         binding.user = ExampleData("John", "Snow")
         binding.setLifecycleOwner(viewLifecycleOwner)
+        mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.TUTORIAL_BEGIN, null)
     }
 //    // TODO: Rename method, update argument and hook method into UI event
 //    fun onButtonPressed(uri: Uri) {

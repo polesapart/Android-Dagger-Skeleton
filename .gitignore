@@ -13,3 +13,5 @@
 .externalNativeBuild
 *~
 #.cxx
+# This one is private:
+app/google-services.json

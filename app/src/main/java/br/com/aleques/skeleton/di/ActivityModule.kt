@@ -9,7 +9,7 @@ interface ActivityModule {
 
     @ActivityScope
     @ContributesAndroidInjector(modules = [MainActivityModule::class])
-    fun mainActivity() : MainActivity
+    fun mainActivity(): MainActivity
 
     // Add other activities here
 }
