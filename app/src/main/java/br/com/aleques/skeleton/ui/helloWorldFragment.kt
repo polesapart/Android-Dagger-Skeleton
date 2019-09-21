@@ -1,13 +1,10 @@
 package br.com.aleques.skeleton.ui
 
-import android.content.Context
-import android.net.Uri
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import br.com.aleques.skeleton.R
+import androidx.fragment.app.Fragment
 import br.com.aleques.skeleton.databinding.FragmentHelloWorldBinding
 import br.com.aleques.skeleton.util.autoCleared
 import br.com.aleques.skeleton.vo.ExampleData
