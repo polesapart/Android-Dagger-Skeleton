@@ -7,7 +7,7 @@ import dagger.Binds
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
-@Module(includes = [ActivityProviderModule::class, FirebaseModule::class])
+@Module(includes = [ActivityProviderModule::class, FireBaseActivityModule::class])
 abstract class MainActivityModule {
     @FragmentScope
     @ContributesAndroidInjector(modules = [ExampleFragmentModule::class])
