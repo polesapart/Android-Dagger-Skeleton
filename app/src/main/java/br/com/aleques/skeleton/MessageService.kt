@@ -7,7 +7,10 @@ import timber.log.Timber
 class MessageService : FirebaseMessagingService() {
 
     override fun onMessageReceived(msg: RemoteMessage) {
-        Timber.w("Got remote message $msg")
+        Timber.e("Got remote message from ${msg.from}: ${msg.data}")
+        msg.notification?.also {
+            Timber.e("Notification \"${it.title}\": ${it.body}")
+        }
     }
 
     override fun onNewToken(token: String) {
