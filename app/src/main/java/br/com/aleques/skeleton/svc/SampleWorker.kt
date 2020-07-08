@@ -1,12 +1,11 @@
 package br.com.aleques.skeleton.svc
 
 import android.content.Context
-import android.util.Log
 import android.widget.Toast
+import androidx.hilt.Assisted
+import androidx.hilt.work.WorkerInject
 import androidx.work.Worker
 import androidx.work.WorkerParameters
-import com.squareup.inject.assisted.Assisted
-import com.squareup.inject.assisted.AssistedInject
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.launch
@@ -15,9 +14,10 @@ import javax.inject.Inject
 
 class Foo @Inject constructor()
 
-class SampleWorker @AssistedInject constructor(@Assisted private val appContext: Context,
-                                               @Assisted private val params: WorkerParameters,
-                                               private val foo: Foo
+class SampleWorker @WorkerInject constructor(
+    @Assisted private val appContext: Context,
+    @Assisted private val params: WorkerParameters,
+    private val foo: Foo
 ) : Worker(appContext, params) {
     override fun doWork(): Result {
         Timber.d("Hello world!")
@@ -27,8 +27,4 @@ class SampleWorker @AssistedInject constructor(@Assisted private val appContext:
         }
         return Result.success()
     }
-
-    @AssistedInject.Factory
-    interface Factory : ChildWorkerFactory
-
 }

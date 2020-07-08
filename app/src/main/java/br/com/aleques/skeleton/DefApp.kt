@@ -1,36 +1,33 @@
 package br.com.aleques.skeleton
 
 import android.content.Context
+import androidx.hilt.work.HiltWorkerFactory
 import androidx.multidex.MultiDex
+import androidx.multidex.MultiDexApplication
 import androidx.work.Configuration
-import androidx.work.WorkManager
-import br.com.aleques.skeleton.di.DaggerAppComponent
-import br.com.aleques.skeleton.svc.SampleWorkerFactory
-import dagger.android.AndroidInjector
-import dagger.android.support.DaggerApplication
+import dagger.hilt.android.HiltAndroidApp
 import timber.log.Timber
 import javax.inject.Inject
 
-class DefApp : DaggerApplication() {
-    @Inject
-    lateinit var workerFactory: SampleWorkerFactory
+@HiltAndroidApp
+class DefApp : MultiDexApplication(), Configuration.Provider {
 
-    override fun applicationInjector(): AndroidInjector<out DaggerApplication> {
-        return DaggerAppComponent.builder().build()
-    }
+
+    @Inject
+    lateinit var workerFactory: HiltWorkerFactory
 
     override fun onCreate() {
         super.onCreate()
-        WorkManager.initialize(
-            this,
-            Configuration.Builder().setWorkerFactory(workerFactory).build()
-        )
         if (BuildConfig.DEBUG) {
             Timber.plant(Timber.DebugTree())
         }
     }
+
     override fun attachBaseContext(base: Context) {
         super.attachBaseContext(base)
         MultiDex.install(this)
     }
+
+    override fun getWorkManagerConfiguration() =
+        Configuration.Builder().setWorkerFactory(workerFactory).build()
 }

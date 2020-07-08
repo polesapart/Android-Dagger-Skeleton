@@ -4,19 +4,22 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import br.com.aleques.skeleton.databinding.FragmentHelloWorldBinding
 import br.com.aleques.skeleton.util.autoCleared
 import br.com.aleques.skeleton.vo.ExampleData
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.perf.FirebasePerformance
-import dagger.android.support.DaggerFragment
+import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 
-class helloWorldFragment : DaggerFragment() {
+@AndroidEntryPoint
+class helloWorldFragment : Fragment() {
 
     @Inject
     lateinit var mFirebaseAnalytics: FirebaseAnalytics
+
     @Inject
     lateinit var mFirebasePerf: FirebasePerformance
 
