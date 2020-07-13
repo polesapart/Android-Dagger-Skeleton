@@ -75,7 +75,7 @@ dependencies {
     // Add the Crashlytics NDK dependency
     //implementation 'com.crashlytics.sdk.android:crashlytics-ndk:2.1.0'
 
-    implementation 'com.google.firebase:firebase-messaging:20.2.2'
+    implementation 'com.google.firebase:firebase-messaging:20.2.3'
     implementation 'com.google.firebase:firebase-inappmessaging-display:19.1.0'
     api 'com.google.guava:guava:28.1-android'
 
